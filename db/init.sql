@@ -1,3 +1,7 @@
+CREATE DATABASE college_db;
+
+USE college_db;
+
 CREATE TABLE students (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100),
@@ -15,3 +19,13 @@ INSERT INTO students (name, stream, age, gender, college, semester) VALUES
 ('Eva Green', 'Computer Science', 19, 'Female', 'Tech University', 3),
 ('Frank White', 'Mechanical Engineering', 24, 'Male', 'Engineering College', 8);
 
+
+
+CREATE TABLE admins (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) UNIQUE,
+  password VARCHAR(255) -- store hashed passwords
+);
+INSERT INTO admins (username, password) VALUES
+('admin1', 'hashed_password_1'),
+('admin2', 'hashed_password_2');
