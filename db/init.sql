@@ -1,8 +1,11 @@
-CREATE DATABASE college_db;
+-- 1) Create the database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS college_db;
 
+-- 2) Switch to using this database
 USE college_db;
 
-CREATE TABLE students (
+-- 3) Create students table
+CREATE TABLE IF NOT EXISTS students (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100),
   stream VARCHAR(100),
@@ -11,21 +14,10 @@ CREATE TABLE students (
   college VARCHAR(100),
   semester INT
 );
-INSERT INTO students (name, stream, age, gender, college, semester) VALUES
-('Alice Johnson', 'Computer Science', 20, 'Female', 'Tech University', 4),
-('Bob Smith', 'Mechanical Engineering', 22, 'Male', 'Engineering College', 6),
-('Catherine Lee', 'Electrical Engineering', 21, 'Female', 'Tech University', 5),
-('David Brown', 'Civil Engineering', 23, 'Male', 'Engineering College', 7),
-('Eva Green', 'Computer Science', 19, 'Female', 'Tech University', 3),
-('Frank White', 'Mechanical Engineering', 24, 'Male', 'Engineering College', 8);
 
-
-
-CREATE TABLE admins (
+-- 4) Create admins table
+CREATE TABLE IF NOT EXISTS admins (
   id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(50) UNIQUE,
-  password VARCHAR(255) -- store hashed passwords
+  password VARCHAR(255)
 );
-INSERT INTO admins (username, password) VALUES
-('admin1', 'hashed_password_1'),
-('admin2', 'hashed_password_2');
