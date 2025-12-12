@@ -1,3 +1,4 @@
+from utils.auth_middleware import jwt_required
 from flask import Blueprint, request, jsonify
 from models.student_model import (
     get_all_students,
@@ -19,7 +20,7 @@ def search():
     results = search_students(name, stream)
     return jsonify(results), 200
 
-# Protected routes - add @jwt_required decorator later
+# Protected routes - added @jwt_required decorator
 @student_bp.route("/students", methods=["GET"])
 def list_students():
     students = get_all_students()
