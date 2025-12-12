@@ -10,3 +10,4 @@ class Config:
     DB_PASSWORD = os.getenv("DB_PASSWORD", "")
     DB_NAME = os.getenv("DB_NAME", "college_db")
     JWT_SECRET = os.getenv("JWT_SECRET", "dev_secret_key")
+    JWT_ALGORITHM = "HS256"

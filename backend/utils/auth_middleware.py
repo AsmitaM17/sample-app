@@ -1,10 +1,9 @@
 from flask import request, jsonify
 from functools import wraps
-import os
 import jwt
+from config import Config
 
-JWT_SECRET = os.getenv("JWT_SECRET", "dev_secret_key")
-JWT_ALGO = "HS256"
+
 
 def jwt_required(f):
     """Decorator to protect routes - requires valid JWT token"""
@@ -26,7 +25,7 @@ def jwt_required(f):
         
         try:
             # Verify and decode token
-            payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGO])
+            payload = jwt.decode(token, Config.JWT_SECRET, algorithms=[Config.JWT_ALGO])
             # Attach admin info to request for use in route
             request.admin_id = payload["admin_id"]
             request.admin_username = payload["username"]
