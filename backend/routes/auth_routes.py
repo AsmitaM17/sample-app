@@ -2,13 +2,11 @@ from flask import Blueprint, request, jsonify
 from datetime import datetime, timedelta
 import bcrypt
 import jwt
-from config import Config
 
 from models.admin_model import get_admin_by_username
+from config import Config
 
 auth_bp = Blueprint("auth", __name__, url_prefix="/admin")
-
-
 
 @auth_bp.route("/login", methods=["POST"])
 def admin_login():
@@ -32,6 +30,6 @@ def admin_login():
         "username": admin["username"],
         "exp": datetime.utcnow() + timedelta(hours=4),
     }
-    token = jwt.encode(payload, Config.JWT_SECRET, algorithm=Config.JWT_ALGO)
+    token = jwt.encode(payload, Config.JWT_SECRET, algorithm=Config.JWT_ALGORITHM)
 
     return jsonify({"token": token, "username": admin["username"]}), 200
